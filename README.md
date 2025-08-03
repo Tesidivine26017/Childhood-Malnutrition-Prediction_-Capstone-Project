@@ -16,7 +16,7 @@ Early detection is critical but often delayed due to lack of resources, trained 
 This capstone project aims to **predict the risk of malnutrition in children under five** using demographic
 and anthropometric data (e.g., age, weight, height, MUAC). The goal is to **enable early intervention** and support health professionals with data-driven insights.
 
-Dataset: https://dhsprogram.com/data/dataset/Rwanda_Standard-DHS_2019.
+Dataset: https://dhsprogram.com/data/dataset/Rwanda_Standard-DHS_2019.cfm
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 
 1️⃣ Part 1: Problem Definition & Planning
