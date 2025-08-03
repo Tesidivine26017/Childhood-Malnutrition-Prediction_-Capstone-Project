@@ -43,9 +43,13 @@ Data Status	☐ Clean ☑ Requires Preprocessing (handled in Python)
 2️⃣ Part 2: Python Analytics Tasks
 
 🧹 Data Cleaning
+
 - Removed duplicates
+ 
 - Imputed missing values
+ 
 - Encoded the `nutrition_status` column into numeric form
+ 
 - Scaled features using `StandardScaler`
 
 
