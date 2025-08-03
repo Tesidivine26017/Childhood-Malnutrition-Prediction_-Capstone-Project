@@ -1,4 +1,4 @@
-# Childhood-Malnutrition-Prediction_-Capstone-Project
+<img width="1600" height="830" alt="image" src="https://github.com/user-attachments/assets/539376f1-fc30-4469-890b-5d82c2b86970" /># Childhood-Malnutrition-Prediction_-Capstone-Project
 
 Names:Tesi Divine 
 ID: 26017
@@ -55,18 +55,27 @@ Data Status	☐ Clean ☑ Requires Preprocessing (handled in Python)
 
 # === 1. LIBRARIES ===
 import pandas as pd
+
 import numpy as np
+
 import seaborn as sns
+
 import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
+
 from sklearn.preprocessing import StandardScaler, LabelEncoder
+
 from sklearn.ensemble import RandomForestClassifier, VotingClassifier
+
 from sklearn.linear_model import LogisticRegression
+
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 
 import warnings
+
 warnings.filterwarnings('ignore')
+
 
 📊 Exploratory Data Analysis (EDA)
 
@@ -75,22 +84,31 @@ warnings.filterwarnings('ignore')
 - Target distribution plots
 
 def run_eda(df):
-    print(df.describe())
+
+   print(df.describe())
 
   # Target distribution
+  
   sns.countplot(x='nutrition_status', data=df)
-    plt.title("Nutrition Status Distribution")
-    plt.show()
+  
+   plt.title("Nutrition Status Distribution")
+   
+   plt.show()
 
   # Correlation heatmap
+  
   plt.figure(figsize=(8, 6))
-    sns.heatmap(df.drop('nutrition_status', axis=1).corr(), annot=True, cmap='coolwarm')
-    plt.title("Feature Correlation Matrix")
-    plt.show()
+  
+   sns.heatmap(df.drop('nutrition_status', axis=1).corr(), annot=True, cmap='coolwarm')
+   
+   plt.title("Feature Correlation Matrix")
+   
+   plt.show()
 
 run_eda(df)
 
 <img width="1187" height="569" alt="image" src="https://github.com/user-attachments/assets/257dced2-6a67-4cb6-bded-0741e590a1de" />
+
 
 🤖 Machine Learning Model
 
@@ -99,15 +117,21 @@ run_eda(df)
 - Target: `nutrition_status_encoded` (multi-class classification)
 
   # Features and target
+  
 X = df[['age_months', 'weight_kg', 'height_cm', 'muac_cm', 'bmi']]
+
 y = df['nutrition_status_encoded']
 
 # Scale features
+
 scaler = StandardScaler()
+
 X_scaled = scaler.fit_transform(X)
 
 # Train-test split
+
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+
 
 📈 Model Evaluation
 
@@ -115,20 +139,56 @@ X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, 
 - Accuracy Score: ~88–91%
 - Classification report (Precision, Recall, F1-Score)
 
+ def evaluate_model(model, X_test, y_test, le):
+ 
+   y_pred = model.predict(X_test)
+    
+   print("Classification Report:")
+   
+   print(classification_report(y_test, y_pred, target_names=le.classes_))
+
+   print("\nConfusion Matrix:")
+   
+   cm = confusion_matrix(y_test, y_pred)
+   
+   sns.heatmap(cm, annot=True, fmt='d', xticklabels=le.classes_, yticklabels=le.classes_, cmap='Blues')
+   
+   plt.xlabel("Predicted")
+   
+   plt.ylabel("True")
+   
+   plt.title("Confusion Matrix")
+   
+   plt.show()
+
+   print("Accuracy:", accuracy_score(y_test, y_pred))
+
+evaluate_model(ensemble, X_test, y_test, le)
+
+<img width="735" height="301" alt="image" src="https://github.com/user-attachments/assets/eefdf8d1-2d4c-4d92-a30e-ba642630d4ed" />
+
+
   💡 Innovations
 
 - Developed a **custom rule-based risk scoring function** for malnutrition prediction using simplified health criteria (`age`, `muac`, `weight`)
 - Added ensemble learning for improved performance
 
   def custom_risk_score(age, weight, muac):
+  
     if age < 24 and weight < 5 and muac < 11.5:
-        return "High Risk"
-    elif muac < 12.5:
-        return "Moderate Risk"
+  
+  return "High Risk"
+  
+   elif muac < 12.5:
+  
+   return "Moderate Risk"
+  
     else:
-        return "Low Risk"
+  
+   return "Low Risk"
 
 # Example
+
 print(custom_risk_score(18, 4.5, 11.0))
 
 <img width="1098" height="429" alt="image" src="https://github.com/user-attachments/assets/407bf582-a546-405a-ab1c-1bd6535e91aa" />
@@ -136,11 +196,15 @@ print(custom_risk_score(18, 4.5, 11.0))
 📈Model Training
 
 # Base Models
+
 rf = RandomForestClassifier(n_estimators=100, random_state=42)
+
 lr = LogisticRegression()
 
 # Ensemble Voting Classifier
+
 ensemble = VotingClassifier(estimators=[('rf', rf), ('lr', lr)], voting='soft')
+
 ensemble.fit(X_train, y_train)
 
 <img width="1084" height="189" alt="image" src="https://github.com/user-attachments/assets/9f5b501a-4d76-4de6-9cb2-de7db5afa567" />
