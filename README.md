@@ -1,4 +1,4 @@
-<img width="1600" height="830" alt="image" src="https://github.com/user-attachments/assets/539376f1-fc30-4469-890b-5d82c2b86970" /># Childhood-Malnutrition-Prediction_-Capstone-Project
+# Childhood-Malnutrition-Prediction_-Capstone-Project
 
 Names:Tesi Divine 
 ID: 26017
@@ -6,7 +6,9 @@ Course: Introduction to Big Data Analytics
 Email: tesidivine02@gmail.com
 --------------------------------------------------------------------------------------------------------------------------------------------
 
+
 ## 🎯 Project Overview
+
 
 Childhood malnutrition remains a persistent public health crisis, especially in developing nations like Rwanda. 
 It contributes significantly to child morbidity and mortality. 
@@ -42,7 +44,9 @@ Data Status	☐ Clean ☑ Requires Preprocessing (handled in Python)
 
 2️⃣ Part 2: Python Analytics Tasks
 
+
 🧹 Data Cleaning
+
 
 - Removed duplicates
  
@@ -77,7 +81,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
+
 📊 Exploratory Data Analysis (EDA)
+
 
 - Descriptive statistics
 - Correlation heatmaps
@@ -110,7 +116,9 @@ run_eda(df)
 <img width="1187" height="569" alt="image" src="https://github.com/user-attachments/assets/257dced2-6a67-4cb6-bded-0741e590a1de" />
 
 
+
 🤖 Machine Learning Model
+
 
 - Used **Random Forest** and **Logistic Regression**
 - Built a **Voting Ensemble Classifier** (Innovation)
@@ -133,7 +141,9 @@ X_scaled = scaler.fit_transform(X)
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
 
+
 📈 Model Evaluation
+
 
 - Confusion matrix
 - Accuracy Score: ~88–91%
@@ -168,7 +178,10 @@ evaluate_model(ensemble, X_test, y_test, le)
 <img width="735" height="301" alt="image" src="https://github.com/user-attachments/assets/eefdf8d1-2d4c-4d92-a30e-ba642630d4ed" />
 
 
+
   💡 Innovations
+
+
 
 - Developed a **custom rule-based risk scoring function** for malnutrition prediction using simplified health criteria (`age`, `muac`, `weight`)
 - Added ensemble learning for improved performance
@@ -193,7 +206,11 @@ print(custom_risk_score(18, 4.5, 11.0))
 
 <img width="1098" height="429" alt="image" src="https://github.com/user-attachments/assets/407bf582-a546-405a-ab1c-1bd6535e91aa" />
 
+
+
 📈Model Training
+
+
 
 # Base Models
 
@@ -209,6 +226,7 @@ ensemble.fit(X_train, y_train)
 
 <img width="1084" height="189" alt="image" src="https://github.com/user-attachments/assets/9f5b501a-4d76-4de6-9cb2-de7db5afa567" />
 -----------------------------------------------------------------------------------------------------------------------------------------------
+
 
 3️⃣ Part 3: Power BI Dashboard Tasks
 
